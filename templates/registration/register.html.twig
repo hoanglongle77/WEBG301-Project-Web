@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<style>
+.form-wrapper{
+    height: 600px;
+    display:flex;
+    justify-content: right;
+    align-items: center;
+    background-image: url("https://thumbs.dreamstime.com/b/online-shopping-smartphone-e-commerce-shopping-tiny-people-character-concept-online-shopping-smartphone-e-commerce-167473457.jpg");
+}
+
+.form-wrapper form{
+    margin-right: 170px;
+    width:400px;
+    height:484px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color:orange;
+}
+
+#heading-register{
+  text-align:center;
+  margin: 20px 10px 20px 10px;
+  padding: 5px 0 5px 0;
+  font-size: 28px;
+  background-color: #0d6efd;
+  color: white;
+  border-radius: 10px;
+}
+
+.form-wrapper form > div{
+    margin: 20px 10px 20px 10px;
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+#registration_form_email{
+    width: 300px;
+    border-radius: 5px;
+}
+
+#registration_form_plainPassword{
+    width: 300px;
+    border-radius: 5px;
+}
+
+{# #registration_form_agreeTerms{
+  width:300px;
+} #}
+
+#btn-wrapper{
+ justify-content:center;
+}
+
+
+</style>
+
+{# Header Section #}
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="{{ path('app_home') }}">
+    <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+     Electro-Store
+  </a>
+</nav>
+
+{# Form Section #}
+<div class="form-wrapper">
+    {{ form_start(registrationForm) }}
+        <h1 id="heading-register">Register</h1>
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+        {{ form_row(registrationForm.agreeTerms ) }}
+        <div id="btn-wrapper">
+        <button class="btn btn-lg btn-primary" type="submit">Register</button>
+        </div>
+    {{ form_end(registrationForm) }}    
+</div>
+
+{# Footer Section #}
+<div class="container">
+  <footer class="py-5">
+    <div class="row">
+      <div class="col-6 col-md-2 mb-3">
+        <h5>Store Information</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Store Information</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Privacy Policy</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Reward Points</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-2 mb-3">
+        <h5>My Account</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">My Order</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">My Wallet</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Reward Points</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-2 mb-3">
+        <h5>Electro Shop - Da Nang</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><h6>Genuine Mobile Device Store</h6></li>
+          <li class="nav-item mb-2"><h6>Store 1: 658 Ngô Quyền, An Hải Bắc, Sơn Trà, Đà Nẵng </h6></li>
+          <li class="nav-item mb-2"><h6>Store 2: Tòa nhà FPT, đường số 1, KCN An Đồn, An Hải Bắc, Sơn Trà, Đà Nẵng</h6></li>
+          <li class="nav-item mb-2"><h6>SĐT: 0782772001</h6></li>
+        </ul>
+      </div>
+
+      <div class="col-md-5 offset-md-1 mb-3">
+        <form>
+          <h5>JOIN WITH ELECTRO SHOP</h5>
+          <p>Monthly digest of what's new and exciting from us.</p>
+          <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+            <label for="newsletter1" class="visually-hidden">Email address</label>
+            <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+            <button class="btn btn-primary" type="button">Subscribe</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+      <p>&copy; 2022 Le Nguyen Hoang Long, Inc. All rights reserved.</p>
+      <ul class="list-unstyled d-flex">
+        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
+        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
+        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
+      </ul>
+    </div>
+  </footer>
+</div>
+
+{% endblock %}

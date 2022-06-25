@@ -1,0 +1,174 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<style>
+.main{
+    height: 600px;
+    display:flex;
+    justify-content: right;
+    align-items: center;
+    background-image: url("https://thumbs.dreamstime.com/b/online-shopping-smartphone-e-commerce-shopping-tiny-people-character-concept-online-shopping-smartphone-e-commerce-167473457.jpg");
+
+}
+
+.form-login{
+    margin-right: 170px;
+    width:400px;
+    height:484px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: orange;
+}
+
+.heading-wrapper{
+    margin: 20px 0 20px 0;
+}
+
+#heading{
+  text-align:center;
+  margin: 20px 10px 20px 10px;
+  padding: 5px 0 5px 0;
+  font-size: 28px;
+  background-color: #0d6efd;
+  color: white;
+  border-radius: 10px;
+}
+
+.input-wrapper{
+    margin: 20px 10px 20px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#inputEmail{
+    width: 300px;
+    border-radius: 5px;
+}
+#inputPassword{
+    width: 300px;
+    border-radius: 5px;
+}
+
+.btn-wrapper{
+    display:flex;
+    justify-content: center;
+}
+
+</style>
+
+{# Header Section #}
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="{{ path('app_home') }}">
+    <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+    Electro-Store
+  </a>
+</nav>
+
+{# Register Form Section #}
+<div class="main">
+<form class="form-login" method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+    
+    <div class="heading-wrapper">
+    <h1 id= "heading" class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    </div>
+
+    <div class="input-wrapper">
+    <label for="inputEmail">Email</label>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+    </div>
+
+    <div class="input-wrapper">
+    <label for="inputPassword">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+    </div>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}">
+   
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html   
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div> #}
+
+ 
+    <div class="btn-wrapper">
+    <button class="btn btn-lg btn-primary" type="submit">
+        Sign in
+    </button>
+    </div>
+</form>
+</div>
+
+{# Footer Section #}
+<div class="container">
+  <footer class="py-5">
+    <div class="row">
+      <div class="col-6 col-md-2 mb-3">
+        <h5>Store Information</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Store Information</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Privacy Policy</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Reward Points</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-2 mb-3">
+        <h5>My Account</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">My Order</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">My Wallet</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Reward Points</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-2 mb-3">
+        <h5>Electro Shop - Da Nang</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><h6>Genuine Mobile Device Store</h6></li>
+          <li class="nav-item mb-2"><h6>Store 1: 658 Ngô Quyền, An Hải Bắc, Sơn Trà, Đà Nẵng </h6></li>
+          <li class="nav-item mb-2"><h6>Store 2: Tòa nhà FPT, đường số 1, KCN An Đồn, An Hải Bắc, Sơn Trà, Đà Nẵng</h6></li>
+          <li class="nav-item mb-2"><h6>SĐT: 0782772001</h6></li>
+        </ul>
+      </div>
+
+      <div class="col-md-5 offset-md-1 mb-3">
+        <form>
+          <h5>JOIN WITH ELECTRO SHOP</h5>
+          <p>Monthly digest of what's new and exciting from us.</p>
+          <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+            <label for="newsletter1" class="visually-hidden">Email address</label>
+            <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+            <button class="btn btn-primary" type="button">Subscribe</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+      <p>&copy; 2022 Le Nguyen Hoang Long, Inc. All rights reserved.</p>
+      <ul class="list-unstyled d-flex">
+        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
+        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
+        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
+      </ul>
+    </div>
+  </footer>
+</div>
+{% endblock %}
