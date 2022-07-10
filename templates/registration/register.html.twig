@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+body {
+    font-family: "Poppins", sans-serif;
+    color: #444444;
+}
+
+.form-wrapper{
+    height: 600px;
+    display:flex;
+    justify-content: right;
+    align-items: center;
+    background-image: url("https://thumbs.dreamstime.com/b/online-shopping-smartphone-e-commerce-shopping-tiny-people-character-concept-online-shopping-smartphone-e-commerce-167473457.jpg");
+}
+
+.form-wrapper form{
+    margin-right: 170px;
+    width:400px;
+    height:484px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color:orange;
+}
+
+#heading-register{
+  text-align:center;
+  margin: 20px 10px 20px 10px;
+  padding: 5px 0 5px 0;
+  font-size: 28px;
+  background-color: #0d6efd;
+  color: white;
+  border-radius: 10px;
+}
+
+.form-wrapper form > div{
+    margin: 20px 10px 20px 10px;
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+#registration_form_email{
+    width: 300px;
+    height: 38px;
+    border: none;
+    border-radius: 5px;
+}
+
+#registration_form_plainPassword{
+    width: 300px;
+    height: 38px;
+    border: none;
+    border-radius: 5px;
+}
+
+{# #registration_form_agreeTerms{
+  width:300px;
+} #}
+
+#btn-wrapper{
+ justify-content:center;
+}
+</style>
+
+{# Form Section #}
+<div class="form-wrapper">
+    {{ form_start(registrationForm) }}
+        <h1 id="heading-register">Register</h1>
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+        {{ form_row(registrationForm.agreeTerms ) }}
+        <div id="btn-wrapper">
+        <button class="btn btn-lg btn-primary" type="submit">Register</button>
+        </div>
+    {{ form_end(registrationForm) }}    
+</div>
+
+{% endblock %}

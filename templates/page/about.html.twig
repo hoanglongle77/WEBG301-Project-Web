@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AboutController!{% endblock %}
+
+{% block body %}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+body {
+    font-family: "Poppins", sans-serif;
+    color: #444444;
+}
+
+.body-container{
+  display: flex;
+  justify-content: center;
+  background-color:  #0d6efd;
+}
+.content-wrapper{
+  width: 1173px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding:10px 10px 10px 10px;
+  border: 2px solid #0d6efd ;
+  border-radius: 5px;
+  background-color: orange;
+}
+.h1-wrapper{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#h1-title{
+  text-align:center;
+  color: #0d6efd;
+}
+
+
+
+</style>
+
+{# Body Section #}
+<div class = "body-container">
+ <div class = "content-wrapper">
+
+ <div class = "h1-wrapper">
+  <h1 id="h1-title">Information About Electro Shop – Da Nang</h1>
+ </div>
+
+ <div class = "paragraph-wrapper">
+  <p id ="paragraph-1">
+  Electro is a prominent electronic equipment distribution brand from the first time it appeared on the market. With the desire to bring a more positive view of smart products in Vietnam, the products on the store are all genuine high-quality products with unbeatable prices. Electro Store is always committed to the quality of the goods sold with the best prices in the region.
+  </p>
+ </div>
+
+ <div class = "contact-wrapper">
+ <ul>
+ <h2>Electro Store</h2>
+ <li>Address 1: 658 Ngô Quyền, An Hải Bắc, Sơn Trà, Đà Nẵng</li>
+ <li>Address 2: Tòa nhà FPT, đường số 1, KCN An Đồn, An Hải Bắc, Sơn Trà, Đà Nẵng</li>
+ <li>Phone: 0782772001</li>
+ <li>Website: http://localhost:8000/</li>
+ <li>Fanpage: https://www.facebook.com/pages/Greenwich%20University%20%C4%90%C3%A0%20N%E1%BA%B5ng/112674889403862/</li>
+ </ul>
+ </div>
+ 
+
+ 
+
+ </div>
+</div>
+{% endblock %}

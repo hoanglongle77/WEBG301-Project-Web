@@ -1,0 +1,137 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+body {
+    font-family: "Poppins", sans-serif;
+    color: #444444;
+}
+
+.main{
+    height: 600px;
+    display:flex;
+    justify-content: right;
+    align-items: center;
+    background-image: url("https://thumbs.dreamstime.com/b/online-shopping-smartphone-e-commerce-shopping-tiny-people-character-concept-online-shopping-smartphone-e-commerce-167473457.jpg");
+
+}
+
+.form-login{
+    margin-right: 170px;
+    width:400px;
+    height:484px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: orange;
+}
+
+.heading-wrapper{
+    margin: 20px 0 20px 0;
+}
+
+#heading{
+  text-align:center;
+  margin: 20px 10px 20px 10px;
+  padding: 5px 0 5px 0;
+  font-size: 28px;
+  background-color: #0d6efd;
+  color: white;
+  border-radius: 10px;
+}
+
+.input-wrapper{
+    margin: 20px 10px 20px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#inputEmail{
+    width: 300px;
+    border-radius: 5px;
+}
+#inputPassword{
+    width: 300px;
+    border-radius: 5px;
+}
+
+.btn-wrapper{
+    display:flex;
+    justify-content: center;
+}
+
+.register-link-wrapper{
+  margin-top: 20px;
+  display:flex;
+  justify-content:center;
+}
+
+#question{
+  margin-right:10px;
+}
+
+#register-link{
+  text-decoration: none;
+}
+
+</style>
+
+{# Login Form Section #}
+<div class="main">
+<form class="form-login" method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {# {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %} #}
+    
+    <div class="heading-wrapper">
+    <h1 id= "heading" class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    </div>
+
+    <div class="input-wrapper">
+    <label for="inputEmail">Email</label>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+    </div>
+
+    <div class="input-wrapper">
+    <label for="inputPassword">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+    </div>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}">
+   
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html   
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div> #}
+
+ 
+    <div class="btn-wrapper">
+    <button class="btn btn-lg btn-primary" type="submit">
+        Sign in
+    </button>
+    </div>
+
+    <div class="register-link-wrapper">
+      <p id="question">You don't have an account?</p>
+      <a id="register-link" href="{{ path('app_register') }}">Sign-up</a>
+    </div>
+</form>
+</div>
+
+{% endblock %}
